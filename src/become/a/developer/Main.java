@@ -18,14 +18,14 @@ public class Main {
         words = checkInput(getWords(br));
         System.out.println("The size of the word array ==> " + words.size());
 
-        System.out.println("The first character of each word: ");
+        System.out.println("\nOutput of the first characters of each word: ");
         System.out.println(getFirstCharacter(words));
 
         words = removeDuplicates(words, checkFrequencyCharacter(words));
 
         System.out.println("\nThe size of the word array ==> " + words.size());
 
-        System.out.println("\nThe first character of each word after deletion: ");
+        System.out.println("\nOutput of the first characters of each word after remove duplicates: ");
         System.out.println(getFirstCharacter(words));
 
         uniqueCharacters(getFirstCharacter(words));
@@ -57,27 +57,26 @@ public class Main {
     // Method finds and prints the first characters of array elements
     public static String getFirstCharacter(List<String> words) {
         String firstLetters = null;
-        for (int i = 0; i < words.size(); i++) {
-            firstLetters += Character.toString(words.get(i).charAt(0));
+        for (String word : words) {
+            firstLetters += Character.toString(word.charAt(0));
         }
         firstLetters = firstLetters.substring(4);
-        return firstLetters;
+        return firstLetters.toString();
     }
 
     //  Method finds the Frequency of Character in words
     public static List<Integer> checkFrequencyCharacter(List<String> words) {
         List<Integer> positions = new ArrayList<>();
-        System.out.println("\nFind the Frequency of Character in words: ");
+        System.out.println("\nFind the Frequency of Character in words (>1) : ");
 
         for (int i = 0; i < words.size(); i++) {
             for (int j = 1; j < words.get(i).length(); j++) {
                 char firstLetter = words.get(i).charAt(0);
                 if (firstLetter == words.get(i).charAt(j)) {
-                    int word_pos = i;
                     int letter_pos = j + 1;
                     System.out.println("The '" + firstLetter + "' in the word '" + words.get(i) + "' from position "
-                            + word_pos + " occurs in the " + letter_pos + " position.");
-                    positions.add(word_pos);
+                            + i + " occurs in the " + letter_pos + " position.");
+                    positions.add(i);
                 }
             }
         }
@@ -89,9 +88,9 @@ public class Main {
     public static List<String> removeDuplicates(List<String> words, List<Integer> positions) {
         words = new ArrayList(words);
         System.out.println("\nDelete the element at the specified position ...  ");
-        for (int j = 0; j < positions.size(); j++) {
+        for (Integer position : positions) {
             for (int i = 0; i < words.size(); i++) {
-                if (i == positions.get(j)) {
+                if (i == position) {
                     words.remove(i);
                 }
             }
