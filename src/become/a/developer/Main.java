@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
         List<String> words;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -52,7 +51,7 @@ public class Main {
     // Method checks the input to console
     public static List<String> checkInput(String string) {
         if (string.isEmpty()) System.exit(0);
-        return Arrays.asList(string.split("[\\s.,]+"));
+        return Arrays.asList(string.split("[\\s.,()]+"));
     }
 
     // Method finds and prints the first characters of array elements
