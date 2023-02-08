@@ -61,7 +61,7 @@ public class Main {
             firstLetters += Character.toString(word.charAt(0));
         }
         firstLetters = firstLetters.substring(4);
-        return firstLetters.toString();
+        return firstLetters;
     }
 
     //  Method finds the Frequency of Character in words
